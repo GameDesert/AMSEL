@@ -8,7 +8,9 @@ A scripting language that is as close as possible to natural mathematical writin
 
 I was messing around with some drag-free projectile equations, and wanted to write a script that would automatically solve a naturally-written equation, no matter where the variable lies (i.e. AMSEL automatically rearranges equations).
 
-What we need:
+# Docs, sorta...
+
+## What we need:
 - Tokeniser
   - Line-by-line
 
