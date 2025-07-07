@@ -154,3 +154,26 @@ def valid_term(term): # Outputs: Valid Terms: Pass or Reevaluate, Invalid Terms:
         return ("invalid", False)
 
 print(split_into_terms("A(3BA)^(5 * 2) - 91.23 =="))
+
+# Split into terms. Now what?
+# Firstly, search for an "=" or a "==". If a "==", and it is at the end, then enclose the rest in an output and re-evaluate.
+
+def convert_into_bracket_notation(split_terms, highest_level=True):
+    if "==" in split_terms:
+        if (highest_level) and (split_terms.count("==") == 1) and (split_terms[-1] == "=="):
+            # Drop last term and re_convert.
+            LHS = split_terms[:-1]
+            return f'("output", {convert_into_bracket_notation(LHS)})'
+        else:
+            raise SyntaxError("Parsing failed. Improper usage of '==' operator.")
+    elif "=" in split_terms:
+        if not highest_level:
+            raise SyntaxError("Parsing failed. '=' operator can only be used at the highest level.")
+        elif split_terms.count("=") != 1:
+            raise SyntaxError("Parsing failed. Only one '=' operator can be present in an equation (at the moment).")
+        else:
+            eq_index = split_terms.index("=")
+            LHS = split_terms[:eq_index]
+            RHS = split_terms[eq_index+1:]
+
+            return f'("equation", {convert_into_bracket_notation(LHS)}, {convert_into_bracket_notation(RHS)})'
