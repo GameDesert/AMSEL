@@ -1,3 +1,13 @@
+# What is AMSEL?
+
+`Automatic Mathematical Script Execution Language`
+
+A scripting language that is as close as possible to natural mathematical writing, with a few extra features to make calculations as easy as possible.
+
+# Why is AMSEL?
+
+I was messing around with some drag-free projectile equations, and wanted to write a script that would automatically solve a naturally-written equation, no matter where the variable lies (i.e. AMSEL automatically rearranges equations).
+
 What we need:
 - Tokeniser
   - Line-by-line
